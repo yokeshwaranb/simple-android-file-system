@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Workspaces/AndroidProjects/ProjectSimple/AndroidFileSystem/app/src/main/res/layout/activity_display_internal_storage.xml" value="0.12222222222222222" />
+        <entry key="..\:/Workspaces/AndroidProjects/ProjectSimple/AndroidFileSystem/app/src/main/res/layout/activity_internal_storage.xml" value="0.1" />
         <entry key="..\:/Workspaces/AndroidProjects/ProjectSimple/AndroidFileSystem/app/src/main/res/layout/activity_main.xml" value="0.11302083333333333" />
       </map>
     </option>

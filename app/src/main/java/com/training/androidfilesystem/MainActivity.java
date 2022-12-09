@@ -2,6 +2,7 @@ package com.training.androidfilesystem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -26,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void launchInternalStorageActivity() {
-
+        Intent intent = new Intent(this, InternalStorageActivity.class);
+        startActivity(intent);
     }
 
     private void launchCacheStorageActivity() {

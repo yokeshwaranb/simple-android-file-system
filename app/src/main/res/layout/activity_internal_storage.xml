@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InternalStorageActivity">
+
+    <EditText
+        android:id="@+id/etFileName"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:hint="File name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etMessage"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:hint="Your Message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etFileName" />
+
+    <Button
+        android:id="@+id/btnSaveFile"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="Save Data to File"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etMessage" />
+
+    <Button
+        android:id="@+id/btnDisplayActivity"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="Go to Display Activity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveFile" />
+
+    <Button
+        android:id="@+id/btnShowInternalStoragePath"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Internal stoarge path"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDisplayActivity" />
+
+    <TextView
+        android:id="@+id/tvInternalStoragePath"
+        android:layout_width="278dp"
+        android:layout_height="37dp"
+        android:hint="Path of internal storage"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnShowInternalStoragePath" />
+
+    <Button
+        android:id="@+id/btnShowFiles"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Show list of App private Files"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInternalStoragePath" />
+
+    <TextView
+        android:id="@+id/tvNameOfFiles"
+        android:layout_width="278dp"
+        android:layout_height="37dp"
+        android:hint="Name of files"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnShowFiles" />
+
+    <EditText
+        android:id="@+id/etDeleteFileName"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:hint="File to Delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameOfFiles" />
+
+    <Button
+        android:id="@+id/btnDeleteFile"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="Delete to File"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDeleteFileName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
