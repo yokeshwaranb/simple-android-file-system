@@ -8,6 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class InternalStorageActivity extends AppCompatActivity {
 
     EditText etFileName;
@@ -46,6 +50,28 @@ public class InternalStorageActivity extends AppCompatActivity {
     }
 
     private void saveFile() {
+        String fileName = etFileName.getText().toString();
+        String messageData = etMessage.getText().toString();
+
+        FileOutputStream fileOutputStream = null;
+
+        try {
+            //Path: /data/data/{package}/files/{file_name}
+            fileOutputStream = openFileOutput(fileName, MODE_APPEND);
+            fileOutputStream.write(messageData.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fileOutputStream != null) {
+                try {
+                    fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     private void openInternalStorageDisplay() {
