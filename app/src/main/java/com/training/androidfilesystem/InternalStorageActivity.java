@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -80,11 +81,30 @@ public class InternalStorageActivity extends AppCompatActivity {
     }
 
     private void showInternalStoragePath() {
+        String path = getFilesDir().toString();
+        tvInternalStoragePath.setText(path);
     }
 
     private void showFiles() {
+        String[] files = fileList();
+        StringBuffer filesStringBuffer = new StringBuffer();
+
+        for(String file:files) {
+            filesStringBuffer.append(file + ", ");
+        }
+
+        tvNameOfFiles.setText(filesStringBuffer);
     }
 
     private void deleteInternalFile() {
+        String deleteFileName = etDeleteFileName.getText().toString();
+
+        boolean isDeleted = deleteFile(deleteFileName);
+
+        if(isDeleted) {
+            Toast.makeText(this, deleteFileName + " is deleted", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Failed to delete", Toast.LENGTH_SHORT).show();
+        }
     }
 }
