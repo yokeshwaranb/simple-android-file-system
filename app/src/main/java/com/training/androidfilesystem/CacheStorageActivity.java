@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -71,6 +72,34 @@ public class CacheStorageActivity extends AppCompatActivity {
     }
 
     private void loadFromInternalCache() {
+        StringBuffer stringBuffer = new StringBuffer();
+
+        File cacheDir = getCacheDir();
+        File cacheFile = new File(cacheDir, INTERNAL_CACHE_STORAGE_FILE_NAME);
+
+        FileInputStream fileInputStream = null;
+
+        try {
+            fileInputStream = new FileInputStream(cacheFile);
+
+            int read;
+            while ((read = fileInputStream.read()) != -1) {
+                stringBuffer.append((char) read);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(fileInputStream != null) {
+                try {
+                    fileInputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        tvIntCacheContent.setText(cacheDir.toString() + "\n\n" + stringBuffer);
     }
 
     private void saveToExternalCache() {
