@@ -51,11 +51,28 @@ public class CacheStorageActivity extends AppCompatActivity {
         File cacheDir = getCacheDir();
         File myCacheFile = new File(cacheDir, INTERNAL_CACHE_STORAGE_FILE_NAME);
 
+        writeToFile(myCacheFile, internalCacheData);
+    }
+
+    private void loadFromInternalCache() {
+        File cacheDir = getCacheDir();
+        File cacheFile = new File(cacheDir, INTERNAL_CACHE_STORAGE_FILE_NAME);
+
+        tvIntCacheContent.setText(cacheDir.toString() + "\n\n" + readFromFile(cacheFile));
+    }
+
+    private void saveToExternalCache() {
+    }
+
+    private void loadFromExternalCache() {
+    }
+
+    private void writeToFile(File file, String data) {
         FileOutputStream fileOutputStream = null;
 
         try {
-            fileOutputStream = new FileOutputStream(myCacheFile);
-            fileOutputStream.write(internalCacheData.getBytes());
+            fileOutputStream = new FileOutputStream(file);
+            fileOutputStream.write(data.getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -71,16 +88,12 @@ public class CacheStorageActivity extends AppCompatActivity {
         }
     }
 
-    private void loadFromInternalCache() {
+    private String readFromFile(File file) {
         StringBuffer stringBuffer = new StringBuffer();
-
-        File cacheDir = getCacheDir();
-        File cacheFile = new File(cacheDir, INTERNAL_CACHE_STORAGE_FILE_NAME);
-
         FileInputStream fileInputStream = null;
 
         try {
-            fileInputStream = new FileInputStream(cacheFile);
+            fileInputStream = new FileInputStream(file);
 
             int read;
             while ((read = fileInputStream.read()) != -1) {
@@ -99,12 +112,6 @@ public class CacheStorageActivity extends AppCompatActivity {
                 }
             }
         }
-        tvIntCacheContent.setText(cacheDir.toString() + "\n\n" + stringBuffer);
-    }
-
-    private void saveToExternalCache() {
-    }
-
-    private void loadFromExternalCache() {
+        return stringBuffer.toString();
     }
 }
