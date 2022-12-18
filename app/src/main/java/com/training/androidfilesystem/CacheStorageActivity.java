@@ -7,6 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class CacheStorageActivity extends AppCompatActivity {
 
     private EditText etIntData;
@@ -17,6 +22,7 @@ public class CacheStorageActivity extends AppCompatActivity {
     private Button btnSaveExtCache;
     private Button btnLoadExtCache;
     private TextView tvExtCacheContent;
+    private String INTERNAL_CACHE_STORAGE_FILE_NAME = "MyInternalCacheFile.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,29 @@ public class CacheStorageActivity extends AppCompatActivity {
     }
 
     private void saveToInternalCache() {
+        String internalCacheData = etIntData.getText().toString();
+
+        File cacheDir = getCacheDir();
+        File myCacheFile = new File(cacheDir, INTERNAL_CACHE_STORAGE_FILE_NAME);
+
+        FileOutputStream fileOutputStream = null;
+
+        try {
+            fileOutputStream = new FileOutputStream(myCacheFile);
+            fileOutputStream.write(internalCacheData.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fileOutputStream != null) {
+                try {
+                    fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     private void loadFromInternalCache() {
