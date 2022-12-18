@@ -24,6 +24,7 @@ public class CacheStorageActivity extends AppCompatActivity {
     private Button btnLoadExtCache;
     private TextView tvExtCacheContent;
     private String INTERNAL_CACHE_STORAGE_FILE_NAME = "MyInternalCacheFile.txt";
+    private String EXTERNAL_CACHE_STORAGE_FILE_NAME = "MyExternalCacheFile.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +63,19 @@ public class CacheStorageActivity extends AppCompatActivity {
     }
 
     private void saveToExternalCache() {
+        String externalCacheData = etExtData.getText().toString();
+
+        File externalCacheDir = getExternalCacheDir();
+        File externalCacheFile = new File(externalCacheDir, EXTERNAL_CACHE_STORAGE_FILE_NAME);
+
+        writeToFile(externalCacheFile, externalCacheData);
     }
 
     private void loadFromExternalCache() {
+        File externalCacheDir = getExternalCacheDir();
+        File externalCacheFile = new File(externalCacheDir, EXTERNAL_CACHE_STORAGE_FILE_NAME);
+
+        tvExtCacheContent.setText(externalCacheDir.toString() + "\n\n" + readFromFile(externalCacheFile));
     }
 
     private void writeToFile(File file, String data) {
