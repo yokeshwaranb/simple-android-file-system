@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void launchCacheStorageActivity() {
-
+        Intent intent = new Intent(this, CacheStorageActivity.class);
+        startActivity(intent);
     }
 
     private void launchExternalStorageActivity() {

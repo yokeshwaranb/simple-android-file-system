@@ -14,6 +14,9 @@
         android:theme="@style/Theme.AndroidFileSystem"
         tools:targetApi="31">
         <activity
+            android:name=".CacheStorageActivity"
+            android:exported="false" />
+        <activity
             android:name=".DisplayInternalStorageActivity"
             android:exported="false" />
         <activity
